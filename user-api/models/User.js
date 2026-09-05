@@ -14,6 +14,9 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true
     },
+  image: {
+    type: String
+  },
     password: {
       type: String,
       required: true

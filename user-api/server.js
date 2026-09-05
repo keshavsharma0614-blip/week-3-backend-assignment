@@ -1,12 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -15,9 +18,11 @@ mongoose
 
 const userRoutes = require("./routes/users");
 const profileRoutes = require("./routes/profile");
+const uploadRoutes = require("./routes/upload");
 
 app.use("/api/users", userRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "User Authentication API is running" });
