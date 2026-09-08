@@ -19,10 +19,12 @@ mongoose
 const userRoutes = require("./routes/users");
 const profileRoutes = require("./routes/profile");
 const uploadRoutes = require("./routes/upload");
+const taskRoutes = require("./routes/tasks");
 
 app.use("/api/users", userRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "User Authentication API is running" });

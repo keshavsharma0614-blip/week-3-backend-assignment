@@ -1,375 +1,110 @@
-# Week 3 Backend Assignment
+# Week 3 - Full Stack Backend Assignment
 
-## Full Stack Integration
-
-This project is a Week 3 Full Stack Development assignment focused on integrating a React frontend with a Node.js, Express.js, and MongoDB backend.
-
-The project implements user management, authentication, JWT-based protected routes, React routing, and image upload functionality.
-
----
+This project connects a React frontend with an Express.js backend and MongoDB. It includes authentication, user management, image upload, and a Task Manager mini project.
 
 ## Technologies Used
 
-### Frontend
-
-- React.js
+- React
 - Vite
 - Axios
 - React Router DOM
-- HTML
-- CSS
-
-### Backend
-
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- JWT (JSON Web Token)
-- bcryptjs
+- JWT
+- bcrypt
 - Multer
-- dotenv
 - CORS
 
----
+## Features
 
-## Features Completed
+### User Authentication
 
-### 1. React Frontend
+- User registration
+- User login
+- Password hashing using bcrypt
+- JWT-based authentication
+- Protected profile route
 
-A React frontend was created using Vite and integrated with the backend REST API using Axios.
+### User Management
 
-The frontend communicates with the Express backend for user management and authentication operations.
+- Create users
+- View users
+- Update users
+- Delete users
+- React frontend connected with backend API
 
-### 2. User Management
+### Image Upload
 
-The application provides complete user CRUD functionality.
+- Image upload using Multer
+- Image preview in React
+- Image storage on the backend
+- Uploaded image display in the profile
+- Image remains available after page refresh
 
-#### Create User
+### React Routing
 
-Users can be added from the React frontend.
-
-#### Read Users
-
-The frontend fetches and displays users from the backend API.
-
-#### Update User
-
-Existing user information can be edited and updated.
-
-#### Delete User
-
-Users can be deleted from the frontend.
-
-#### CRUD Operations
-
-- Create → Add User
-- Read → Display Users
-- Update → Edit User
-- Delete → Delete User
-
----
-
-### 3. User Registration
-
-A dedicated Register page was created.
-
-Users can register using:
-
-- Name
-- Email
-- Password
-
-The registration request is sent from React to the Express backend.
-
-Passwords are securely hashed using bcryptjs before being stored in MongoDB.
-
----
-
-### 4. User Login
-
-A Login page was implemented and connected with the backend authentication API.
-
-The login process works as follows:
-
-1. User enters email and password.
-2. React sends the login request to the Express API.
-3. Backend verifies the credentials.
-4. Backend generates a JWT token.
-5. JWT token is returned to the frontend.
-6. Token is stored in browser localStorage.
-
----
-
-### 5. JWT Authentication
-
-JWT-based authentication is implemented for protected backend routes.
-
-The frontend sends the JWT token using the Authorization header.
-
-The backend verifies the token using authentication middleware before allowing access to protected routes.
-
----
-
-### 6. Protected Profile
-
-A protected Profile page was implemented.
-
-The Profile page sends the stored JWT token to the backend and retrieves the authenticated user's profile information.
-
-The profile displays:
-
-- User Name
-- User Email
-- Uploaded Image
-
-Only authenticated users can access the protected profile API.
-
----
-
-### 7. React Routing
-
-React Router DOM was implemented for frontend navigation.
-
-The application currently contains:
+The frontend includes routes for:
 
 - Users
 - Register
 - Login
 - Profile
+- Tasks
 
-Navigation links are provided between the main pages.
+## Mini Project - Task Manager
 
----
+The Task Manager is the mini project for Week 3.
 
-### 8. Image Upload
+It uses a React frontend connected to an Express.js and MongoDB backend.
 
-Image upload functionality was implemented using Multer.
+### Task Manager Features
 
-The user can select an image from the React frontend and upload it to the Express backend.
-
-#### Image Upload Features
-
-- Select image from device
-- Image preview before upload
-- Upload image using React
-- Multer handles the uploaded file
-- Image is stored in the uploads folder
-- Image path is stored in MongoDB
-- Uploaded image is displayed on the Profile page
-- Image remains available after page refresh
-
-#### Image Upload Flow
-
-Select Image  
-↓  
-React Frontend  
-↓  
-Image Preview  
-↓  
-FormData  
-↓  
-Express Backend  
-↓  
-Multer  
-↓  
-Uploads Folder  
-↓  
-Image Path Stored in MongoDB  
-↓  
-Profile Page  
-↓  
-Display Image
-
----
-
-## Backend API
-
-The backend provides REST APIs for user management and authentication.
-
-### User APIs
-
-- POST `/api/users/register`
-- POST `/api/users/login`
-- GET `/api/users`
-- GET `/api/users/:id`
-- PUT `/api/users/:id`
-- DELETE `/api/users/:id`
-
-### Profile API
-
-- GET `/api/profile`
-
-This route is protected using JWT authentication.
-
-### Image Upload API
-
-- POST `/api/upload`
-
-This route requires JWT authentication and accepts an image using Multer.
-
----
-
-## Database
-
-MongoDB is used as the database for storing user information.
-
-The User model contains:
-
-- Name
-- Email
-- Password
-- Image
-- Created At
-- Updated At
-
-Passwords are stored in hashed form using bcryptjs.
-
-The uploaded image path is stored in the Image field.
-
----
-
-## Middleware
-
-The project uses middleware for authentication and image uploading.
-
-### Authentication Middleware
-
-The JWT authentication middleware verifies the user's token and provides the authenticated user's ID to protected routes.
-
-### Multer Middleware
-
-Multer is used to process image uploads and save uploaded files inside the uploads directory.
-
----
+- JWT-protected task API
+- User-specific tasks
+- Add new tasks
+- Mark tasks as completed
+- Mark completed tasks as pending
+- Delete tasks
+- Filter tasks by:
+  - All
+  - Pending
+  - Completed
+- MongoDB task storage
+- React and Express API integration
 
 ## Project Structure
 
     week-3-backend-assignment/
-    |
-    |-- frontend/
-    |   |
-    |   |-- src/
-    |   |   |
-    |   |   |-- pages/
-    |   |   |   |-- Users.jsx
-    |   |   |   |-- Register.jsx
-    |   |   |   |-- Login.jsx
-    |   |   |   |-- Profile.jsx
-    |   |   |
-    |   |   |-- App.jsx
-    |   |
-    |   |-- package.json
-    |
-    |-- user-api/
-        |
-        |-- middleware/
-        |   |-- auth.js
-        |   |-- upload.js
-        |
-        |-- models/
-        |   |-- User.js
-        |
-        |-- routes/
-        |   |-- users.js
-        |   |-- profile.js
-        |   |-- upload.js
-        |
-        |-- uploads/
-        |
-        |-- .env
-        |-- .env.example
-        |-- .gitignore
-        |-- package.json
-        |-- server.js
+    ├── user-api/
+    │   ├── middleware/
+    │   ├── models/
+    │   ├── routes/
+    │   ├── uploads/
+    │   ├── .env.example
+    │   ├── package.json
+    │   └── server.js
+    │
+    └── frontend/
+        ├── src/
+        │   ├── pages/
+        │   │   ├── Users.jsx
+        │   │   ├── Register.jsx
+        │   │   ├── Login.jsx
+        │   │   ├── Profile.jsx
+        │   │   └── Tasks.jsx
+        │   ├── App.jsx
+        │   └── main.jsx
+        ├── package.json
+        └── vite.config.js
 
----
+## API Integration
 
-## Application Flow
+The React frontend communicates with the Express backend using Axios.
 
-React Frontend  
-↓  
-Register / Login / Users / Profile  
-↓  
-Express REST API  
-↓  
-JWT Authentication  
-↓  
-MongoDB  
-↓  
-Multer Image Upload  
-↓  
-Image Storage and Profile Display
-
----
-
-## Testing
-
-The implemented features were tested through the React frontend and backend API.
-
-The following functionality has been tested:
-
-- Backend connection
-- MongoDB connection
-- User registration
-- User login
-- Password hashing
-- JWT authentication
-- Protected profile
-- User creation
-- User reading
-- User update
-- User deletion
-- Image selection
-- Image preview
-- Image upload
-- Image display
-- Image persistence after refresh
-
----
-
-## Current Status
-
-The following Week 3 features have been successfully implemented:
-
-- [x] React Frontend
-- [x] Vite Setup
-- [x] Backend API Integration
-- [x] MongoDB Integration
-- [x] User Registration
-- [x] User Login
-- [x] Password Hashing
-- [x] JWT Authentication
-- [x] Protected Profile
-- [x] React Routing
-- [x] User CRUD
-- [x] Multer Image Upload
-- [x] Image Preview
-- [x] Image Storage
-- [x] Image Display
-- [x] Image Persistence After Refresh
-
----
-
-## Future Work
-
-The remaining Week 3 requirements will be implemented in the next phase.
-
-Planned functionality includes:
-
-- Task Manager mini project
-- React task management interface
-- Task CRUD operations
-- Task filtering
-- Integration of task management with the existing backend
-
----
+Authentication is handled using JWT tokens stored in browser local storage and sent through the Authorization header for protected requests.
 
 ## Conclusion
 
-This project demonstrates full-stack integration between a React frontend and an Express.js backend connected to MongoDB.
-
-The completed features include user management, registration, login, password hashing, JWT authentication, protected profile access, React routing, and image upload with preview and persistent display.
-
-The project will be extended further with the Task Manager mini project and task filtering functionality.
-
+This project demonstrates full-stack integration between React, Express.js, and MongoDB with authentication, CRUD operations, image upload, routing, and a complete Task Manager mini project.
